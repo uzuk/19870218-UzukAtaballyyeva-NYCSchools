@@ -16,7 +16,7 @@ class SchoolsListViewModel : ViewModel() {
     val schools: MutableLiveData<List<School>> = _schools
 
     //loading status
-    private val _status = MutableLiveData<LoadingStatus>()
+    val _status = MutableLiveData<LoadingStatus>()
     val status: LiveData<LoadingStatus> = _status
 
     // Create a Coroutine scope using a job to be able to cancel when needed

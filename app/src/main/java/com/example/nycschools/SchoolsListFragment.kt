@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_schools_list.*
 
-class SchoolsListFragment : Fragment(), ItemSelector<School> {
+class SchoolsListFragment : NavigationFragment(), ItemSelector<School> {
 
-    private lateinit var viewModel: SchoolsListViewModel
+    val viewModel: SchoolsListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,7 +22,6 @@ class SchoolsListFragment : Fragment(), ItemSelector<School> {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = SchoolsListViewModel()
 
         viewModel.status.observe(viewLifecycleOwner, Observer { status ->
             when(status) {
